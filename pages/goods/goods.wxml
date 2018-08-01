@@ -1,0 +1,9 @@
+<view class="logo">
+    <image src="../assets/images/logo.png" mode="aspectFit"></image>
+</view>
+<i-panel>
+    <i-cell-group>
+        <i-cell title="按车牌号收货" is-link url="/pages/layout/index"></i-cell>
+        <i-cell title="收货记录查询" is-link url="/pages/grid/index"></i-cell>
+    </i-cell-group>
+</i-panel>

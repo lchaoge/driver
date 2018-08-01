@@ -1,0 +1,7 @@
+<i-panel>
+  <i-input value="{{ carNo }}" title="车牌号" autofocus placeholder="请输入车牌号" />
+  <i-input value="{{ siteNo }}" type="number" title="门店号" placeholder="请输入门店号" />
+</i-panel>
+<view class="btn-group">
+  <i-button class="btn" bind:click="queryEvt" size="small" type="info">查询</i-button>
+</view>
