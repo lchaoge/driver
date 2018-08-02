@@ -1,9 +1,60 @@
-<view class="logo">
-    <image src="../assets/images/logo.png" mode="aspectFit"></image>
+<view class='page_row'>
+  <view class="search">
+    <view class="df search_arr">
+      <icon class="searchcion" size='18' type='search'></icon>
+      <input placeholder="请输入车牌号" maxlength='7' value="{{searchValue}}" bindinput='searchInputEvt' />
+    </view>
+  </view>
+  <view class='sousuo' bindtap='searchEvt'>查询</view>
 </view>
-<i-panel>
-    <i-cell-group>
-        <i-cell title="按车牌号收货" is-link url="/pages/layout/index"></i-cell>
-        <i-cell title="收货记录查询" is-link url="/pages/grid/index"></i-cell>
-    </i-cell-group>
-</i-panel>
+
+<view wx:if="{{isSearch}}" style='padding-bottom: 60px;'>
+  <i-panel class="cell-panel-demo">
+    <i-cell>
+      <i-row i-class="demo-row">
+        <i-col span="24" i-class="demo-col">车牌号:京Q9W5V3</i-col>
+      </i-row>
+      <i-row i-class="demo-row">
+          <i-col span="24" i-class="demo-col">收货日期:20180501-20180507</i-col>
+      </i-row>
+      <i-row i-class="demo-row">
+          <i-col span="24" i-class="demo-col">共收货 <text class="red">{{list.length}}</text> 张行程单</i-col>
+      </i-row>
+    </i-cell> 
+  </i-panel>
+  <i-panel class="cell-panel-demo">
+    <i-cell wx:for="{{list}}" wx:for-index="index" wx:for-item="item">
+      <i-row i-class="demo-row">
+        <i-col span="4" i-class="text-left">TU号</i-col>
+        <i-col span="10" i-class="text-center">200000851800</i-col>
+        <i-col span="5" i-class="text-center">OBD</i-col>
+        <i-col span="5" i-class="text-right">30/28</i-col>
+      </i-row> 
+      <i-row i-class="demo-row">
+        <i-col span="10" i-class="text-left">1420西黄村{{index}}店</i-col>
+        <i-col span="8" i-class="text-center">20180501</i-col>
+        <i-col span="6" i-class="text-right">10:05</i-col>
+      </i-row> 
+    </i-cell>
+  </i-panel>
+</view>
+<view class='footer' wx:if="{{isSearch}}">
+  <i-panel class="cell-panel-demo" wx:if="{{!isSubmit}}">
+    <i-button class="btn" bind:click="submitOpen"  size="small" type="info">确认收货</i-button>
+  </i-panel>
+  <view class="i-divider-demo-des" wx:else>
+    <view>收货过程中如遇问题请立即联系门店商管！</view>
+    <view>商管不在可联系总部综合支持电话：<text bind:click="calling">88259310</text></view>
+  </view>
+</view>
+<view wx:if="{{!isSearch}}" style='padding:20px 0;background:#fff;'>
+  <i-load-more tip="暂无查询数据" loading="{{ false }}" />
+</view>
+
+<i-action-sheet visible="{{ visible }}" actions="{{ actions }}" show-cancel bind:cancel="submitCancel" bind:click="submitClick" mask-closable="{{ false }}">
+  <view slot="header" style="padding: 16px">
+      <view style="color: #444;font-size: 16px">提示</view>
+      <text>确认收货后无法恢复哦!</text>
+  </view>
+</i-action-sheet>
+<i-message id="message" />

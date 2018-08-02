@@ -1,3 +1,15 @@
 page{
     background: #f9f9f9;
 }
+.text-left{
+  text-align: left;
+}
+.text-center{
+  text-align: center;
+}
+.text-right{
+  text-align: right;
+}
+.red{
+  color: red;
+}

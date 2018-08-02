@@ -6,7 +6,7 @@
     "pages/record/list/recordList"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#FAFAFA",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "iView WeApp",
     "navigationBarTextStyle": "black",
     "backgroundTextStyle": "dark",

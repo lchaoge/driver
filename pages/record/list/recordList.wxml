@@ -1,4 +1,29 @@
-
-<i-panel title="标题" hide-top>
-    <view style="padding: 15px;">头部距离为 0 的 Panel</view>
+<i-panel hide-top class="cell-panel-demo">
+  <i-cell>
+    <i-row i-class="demo-row">
+      <i-col span="24" i-class="demo-col">车牌号:京Q9W5V3</i-col>
+    </i-row>
+    <i-row i-class="demo-row">
+        <i-col span="24" i-class="demo-col">收货日期:20180501-20180507</i-col>
+    </i-row>
+    <i-row i-class="demo-row">
+        <i-col span="24" i-class="demo-col">共收货 <text class="red">{{list.length}}</text> 张行程单</i-col>
+    </i-row>
+  </i-cell> 
 </i-panel>
+<i-panel class="cell-panel-demo" wx:for="{{list}}" wx:for-index="index" wx:for-item="item">
+    <i-cell>
+      <i-row i-class="demo-row">
+        <i-col span="4" i-class="text-left">TU号</i-col>
+        <i-col span="10" i-class="text-center">200000851800</i-col>
+        <i-col span="5" i-class="text-center">OBD</i-col>
+        <i-col span="5" i-class="text-right">30/28</i-col>
+      </i-row> 
+      <i-row i-class="demo-row">
+        <i-col span="10" i-class="text-left">1420西黄村{{index}}店</i-col>
+        <i-col span="8" i-class="text-center">20180501</i-col>
+        <i-col span="6" i-class="text-right">10:05</i-col>
+      </i-row> 
+    </i-cell>
+</i-panel>
+<i-message id="message" />

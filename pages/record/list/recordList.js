@@ -1,27 +1,39 @@
+const { $Message } = require('../../../dist/base/index');
+const network = require('../../assets/js/ajax.js')
 Page({
   data:{
     form:{
       carNo: '',
       sieNo: ''
-    }
+    },
+    list:[]
   },
   // 页面加载
   onLoad(options){
-    console.log("数据"+options)
-    this.form = options
+    this.setData({
+      form:options
+    })
     this.queryEvt()
   },
   // 查询列表
   queryEvt () {
-    const requestTask = wx.request({
-      url: 'https://wd8489702998bihasp.wilddogio.com/user.json', //仅为示例，并非真实的接口地址
-      data: this.form,
-      header: {
-        'content-type': 'application/json'
+    let params = this.data.form
+    network.GET({
+      params: params,
+      API_URL: "https://wd6783237698uedlow.wilddogio.com/users.json",
+      success: (res) => {
+        let list = []
+        for (let key in res.data){
+          console.log(res.data[key])
+          list.push(res.data[key])
+        }
+        this.setData({
+          list
+        })
       },
-      success: function (res) {
-        console.log(res.data)
+      fail:() => {
+        $Message({content: '系统错误',type: 'error'});
       }
-    })
+    });
   }
 });
